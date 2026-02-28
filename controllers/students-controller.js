@@ -18,7 +18,7 @@ function setup(app, students) {
   });
 
   app.get('/about', function(req, res) {
-    let model = {title: "About Devops break "};
+    let model = {title: "About"};
     res.render('about', model);
   });
 
