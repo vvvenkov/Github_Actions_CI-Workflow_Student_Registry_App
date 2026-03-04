@@ -23,7 +23,7 @@ function setup(app, students) {
   });
 
   app.get('/add-student', function(req, res) {
-    let model = {title: "Add Student"};
+    let model = {title: "Add A Student"};
     res.render('add-student', model);
   });
 
