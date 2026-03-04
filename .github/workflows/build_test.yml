@@ -1,7 +1,9 @@
-name: Build and test the app
+name: Build, Test, and Deploy
 
 on:
   push:
+    branches: [ "main" ]
+  pull_request:
     branches: [ "main" ]
 
 jobs:
@@ -22,8 +24,16 @@ jobs:
     - name: Run tests
       run: npm test
 
-  deploy:
+  run_npm_security_scan:
     needs: build_and_test
+    runs-on: ubuntu-latest
+    steps:  
+      - name: Run security scan with npm audit
+        run: npm audit 
+
+    
+  deploy:
+    needs: run_npm_security_scan
     runs-on: ubuntu-latest
     steps:
     - name: Deploy to Render
